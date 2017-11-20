@@ -69,20 +69,21 @@ describe('MyEventEmitter', function(){
 
 
   it("the 'emit' property invokes the event listener for the specified event", function(){
-    var greetingString = "",
-        expression;
+    var greetingString,
+        byeString;
     eventEmitter.addListener('greet', function(name){
-      greetingString += "Hello, " + name + "!";
+      greetingString = "Hello, " + name + "!";
     });
 
-    eventEmitter.addListener('greet', function(timeOfDay){
-      expression = "Good " + timeOfDay;
+    eventEmitter.addListener('bye', function(name){
+      byeString = "Bye, " + name + "!";
     });
 
-    eventEmitter.emit('greet', ['Shanna'],["Evening"]);
-
+    eventEmitter.emit('greet', 'Shanna');
     expect(greetingString).toEqual('Hello, Shanna!');
-    expect(expression).toEqual("Good Evening");
+
+    eventEmitter.emit('bye', 'Shanna');
+    expect(byeString).toEqual("Bye, Shanna!");
 
   });
 
@@ -105,17 +106,18 @@ describe('MyEventEmitter', function(){
   it('the "emit" property invokes all callback functions for the specified event', function(){
     var values = [];
 
-    eventEmitter.addListener('greet', function name(name){
-      values.push("Hello, " + name + "!");
+    eventEmitter.addListener('greet', function name(name, name2){
+      values.push("Hello, " + name + "!" + " My name is " + name2 + ".");
     });
 
-    eventEmitter.addListener('greet', function phrase(){
-      values.push("How are you?");
+    eventEmitter.addListener('greet', function phrase(name){
+      values.push("How are you, " + name + "?");
     });
 
-    eventEmitter.emit('greet', ['Patrick']);
-    expect(values).toEqual([ 'Hello, Patrick!', 'How are you?' ]);
+    eventEmitter.emit('greet', 'Patrick', 'Karen');
+    expect(values).toEqual([ 'Hello, Patrick! My name is Karen.', 'How are you, Patrick?' ]);
 
   });
 
 });
+
