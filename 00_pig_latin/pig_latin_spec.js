@@ -14,48 +14,48 @@
 
 // **Do not use elaborate RegExp's in your solutions.**
 
-describe("translate", function() {
-  it("translates a word beginning with a vowel", function() {
+describe("translate", function () {
+  it("translates a word beginning with a vowel", function () {
     var s = translate("apple");
     expect(s).toEqual("appleay");
   });
 
-  it("translates a word beginning with a consonant", function() {
+  xit("translates a word beginning with a consonant", function () {
     var s = translate("banana");
     expect(s).toEqual("ananabay");
   });
 
-  it("translates a word beginning with two consonants", function() {
+  xit("translates a word beginning with two consonants", function () {
     var s = translate("cherry");
     expect(s).toEqual("errychay");
   });
 
-  it("translates two words", function() {
+  xit("translates two words", function () {
     var s = translate("eat pie");
     expect(s).toEqual("eatay iepay");
   });
 
-  it("translates a word beginning with three consonants", function() {
+  xit("translates a word beginning with three consonants", function () {
     var s = translate("three");
     expect(s).toEqual('eethray');
   });
 
-  it("counts 'sch' as a single phoneme", function() {
+  xit("counts 'sch' as a single phoneme", function () {
     var s = translate("school");
     expect(s).toEqual("oolschay");
   });
 
-  it("counts 'qu' as a single phoneme", function() {
+  it("counts 'qu' as a single phoneme", function () {
     var s = translate("quiet");
     expect(s).toEqual("ietquay");
   });
 
-  it("counts 'qu' as a consonant even when it's preceded by a consonant", function() {
+  xit("counts 'qu' as a consonant even when it's preceded by a consonant", function () {
     var s = translate("square");
     expect(s).toEqual("aresquay");
   });
 
-  it("translates many words", function() {
+  xit("translates many words", function () {
     var s = translate("the quick brown fox");
     expect(s).toEqual("ethay ickquay ownbray oxfay");
   });
