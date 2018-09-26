@@ -1,8 +1,7 @@
-const rotater = str => {
-    let count = 0;
+function rotater(str) {
     return function (num) {
         let splitStr = str.split(), temp;
-        while (count < num) {
+        for (let count = 0; count < num; count++) {
             if (count >= splitStr.length) {
                 temp = splitStr.pop();
                 splitStr.unshift(temp);
@@ -10,7 +9,6 @@ const rotater = str => {
                 temp = splitStr.shift();
                 splitStr.push(temp);
             }
-            count++;
         }
         return splitStr.join('');
     }
