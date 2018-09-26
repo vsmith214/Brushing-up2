@@ -1,29 +1,29 @@
-describe('MyEventEmitter', function(){
+xdescribe('MyEventEmitter', function () {
   var eventEmitter;
 
 
-  beforeEach(function(){
+  beforeEach(function () {
     eventEmitter = new MyEventEmitter();
   });
 
-  it('is an object', function(){
+  it('is an object', function () {
     expect(typeof eventEmitter).toEqual('object');
   });
 
-  it('has an "events" property', function(){
+  it('has an "events" property', function () {
     expect(eventEmitter.hasOwnProperty('events')).toEqual(true);
     expect(typeof eventEmitter.events).toEqual('object');
   });
 
-  it('has an "addListener" and "emit" property on its prototype', function(){
+  it('has an "addListener" and "emit" property on its prototype', function () {
     expect(eventEmitter.hasOwnProperty('addListener')).toEqual(false);
     expect(eventEmitter.hasOwnProperty('emit')).toEqual(false);
     expect(typeof MyEventEmitter.prototype.addListener).toEqual('function');
     expect(typeof MyEventEmitter.prototype.emit).toEqual('function');
   });
 
-  it('stores an "event" and a callback function in an Array', function(){
-    eventEmitter.addListener('greet', function(name){
+  it('stores an "event" and a callback function in an Array', function () {
+    eventEmitter.addListener('greet', function (name) {
       return "Hello, " + name + "!";
     });
 
@@ -34,12 +34,12 @@ describe('MyEventEmitter', function(){
     expect(handlerFunction('Scott')).toEqual('Hello, Scott!');
   });
 
-  it('stores multiple "callback" functions for a single event', function(){
-    eventEmitter.addListener('greet', function(name){
+  it('stores multiple "callback" functions for a single event', function () {
+    eventEmitter.addListener('greet', function (name) {
       return "Hello, " + name + "!";
     });
 
-    eventEmitter.addListener('greet', function(){
+    eventEmitter.addListener('greet', function () {
       return "How are you?";
     });
 
@@ -50,16 +50,16 @@ describe('MyEventEmitter', function(){
 
   });
 
-  it('stores multiple events', function(){
-    eventEmitter.addListener('greet', function(name){
+  it('stores multiple events', function () {
+    eventEmitter.addListener('greet', function (name) {
       return "Hello, " + name + "!";
     });
 
-    eventEmitter.addListener('bye', function(name){
+    eventEmitter.addListener('bye', function (name) {
       return "Bye, " + name + "!";
     });
 
-    eventEmitter.addListener('shout', function(phrase){
+    eventEmitter.addListener('shout', function (phrase) {
       return phrase.toUpperCase() + "!";
     });
 
@@ -68,14 +68,14 @@ describe('MyEventEmitter', function(){
   });
 
 
-  it("the 'emit' property invokes the event listener for the specified event", function(){
+  it("the 'emit' property invokes the event listener for the specified event", function () {
     var greetingString,
-        byeString;
-    eventEmitter.addListener('greet', function(name){
+      byeString;
+    eventEmitter.addListener('greet', function (name) {
       greetingString = "Hello, " + name + "!";
     });
 
-    eventEmitter.addListener('bye', function(name){
+    eventEmitter.addListener('bye', function (name) {
       byeString = "Bye, " + name + "!";
     });
 
@@ -87,9 +87,9 @@ describe('MyEventEmitter', function(){
 
   });
 
-  it('the emit function invokes each callback\'s apply method', function(){
+  it('the emit function invokes each callback\'s apply method', function () {
 
-    var callback = function(name){
+    var callback = function (name) {
       return "Hello, " + name + "!";
     };
 
@@ -103,19 +103,19 @@ describe('MyEventEmitter', function(){
 
   });
 
-  it('the "emit" property invokes all callback functions for the specified event', function(){
+  it('the "emit" property invokes all callback functions for the specified event', function () {
     var values = [];
 
-    eventEmitter.addListener('greet', function name(name, name2){
+    eventEmitter.addListener('greet', function name(name, name2) {
       values.push("Hello, " + name + "!" + " My name is " + name2 + ".");
     });
 
-    eventEmitter.addListener('greet', function phrase(name){
+    eventEmitter.addListener('greet', function phrase(name) {
       values.push("How are you, " + name + "?");
     });
 
     eventEmitter.emit('greet', 'Patrick', 'Karen');
-    expect(values).toEqual([ 'Hello, Patrick! My name is Karen.', 'How are you, Patrick?' ]);
+    expect(values).toEqual(['Hello, Patrick! My name is Karen.', 'How are you, Patrick?']);
 
   });
 

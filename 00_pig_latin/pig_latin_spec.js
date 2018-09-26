@@ -20,27 +20,27 @@ describe("translate", function () {
     expect(s).toEqual("appleay");
   });
 
-  xit("translates a word beginning with a consonant", function () {
+  it("translates a word beginning with a consonant", function () {
     var s = translate("banana");
     expect(s).toEqual("ananabay");
   });
 
-  xit("translates a word beginning with two consonants", function () {
+  it("translates a word beginning with two consonants", function () {
     var s = translate("cherry");
     expect(s).toEqual("errychay");
   });
 
-  xit("translates two words", function () {
+  it("translates two words", function () {
     var s = translate("eat pie");
     expect(s).toEqual("eatay iepay");
   });
 
-  xit("translates a word beginning with three consonants", function () {
+  it("translates a word beginning with three consonants", function () {
     var s = translate("three");
     expect(s).toEqual('eethray');
   });
 
-  xit("counts 'sch' as a single phoneme", function () {
+  it("counts 'sch' as a single phoneme", function () {
     var s = translate("school");
     expect(s).toEqual("oolschay");
   });
@@ -50,12 +50,12 @@ describe("translate", function () {
     expect(s).toEqual("ietquay");
   });
 
-  xit("counts 'qu' as a consonant even when it's preceded by a consonant", function () {
+  it("counts 'qu' as a consonant even when it's preceded by a consonant", function () {
     var s = translate("square");
     expect(s).toEqual("aresquay");
   });
 
-  xit("translates many words", function () {
+  it("translates many words", function () {
     var s = translate("the quick brown fox");
     expect(s).toEqual("ethay ickquay ownbray oxfay");
   });
